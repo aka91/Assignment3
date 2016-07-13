@@ -2,7 +2,7 @@
 //  Assignment#3
 //
 //  Created by Alex Kim on 2016-07-15.
-//  Copyright Â© 2016 DEVELOPED BY SFU COMPUTER SCIENSE STUDENTS. All rights reserved.
+//  Copyright © 2016 DEVELOPED BY SFU COMPUTER SCIENSE STUDENTS. All rights reserved.
 //
 // File:        a1simpledriver.cpp
 // Author:      Alex Kim
@@ -18,8 +18,10 @@
 #include <cctype>
 #include <fstream>
 #include <sstream>
+#include <locale>
 
 // Include all header files here
+#include "BinarySearchTree.h"
 
 using namespace std;
 
@@ -27,30 +29,55 @@ int main(int argc, char *argv[])
 {
  	//Populating the translator by opening the file and 
 	char* filename = "dataFile.txt";
+	string engword;
+	string klinword;
 	ifstream myfile (filename);
+
+	BinarySearchTree b;
+
 	if (myfile.is_open())
 	{
 		cout << "Reading from a file:" << endl; 
 		string line;
-		while ( getline (myfile,line) )
+		char delimiter(':');
+		while (getline( myfile, line, delimiter ) )
 		{
-		  cout << line << '\n';
 		  istringstream ss(line);
+		  ss >> klinword >> engword;
+		  
+		  //cout << klinword << endl;
+		  //locale loc;
+	
+		  b.insert(engword, klinword); //works
+		 
+		  b.display();
 
-		  string engword;
-		  string klinword;
+		  //Shouldn't do this when need to display
+		  //Maybe do this in the ADT class
+		  //engword = toupper(engword, loc);
+		  //klinword = toupper(klinword, loc);
 
-		  ss >> engword >> klinword;
-		  cout << engword << klinword << endl;
+		 
+
+
 		}
+
+		cout <<"Current number of words in tree: " << b.getWordCount() << endl;
+		if(b.isEmpty() == true)
+		cout << "tree is empty";
+		
+		
+
 		myfile.close();
+
 	}
-	else cout << "Unable to open file"; 
+	else cout << "Unable to open file" << endl; 
 
 	if (argc == 1) //Assuming it starts from 1 and not 0
 	{
 
 		  cout << "Reading from cin:" << endl; 
+		  string aWord;
 		  while(getline(cin, aWord)) {   // while (there is data)
 		    // Translate aWord.
 		  }
@@ -61,7 +88,6 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
-
 
 
 
