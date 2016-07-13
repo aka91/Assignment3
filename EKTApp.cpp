@@ -2,9 +2,9 @@
 //  Assignment#3
 //
 //  Created by Alex Kim on 2016-07-15.
-//  Copyright © 2016 DEVELOPED BY SFU COMPUTER SCIENSE STUDENTS. All rights reserved.
+//  Copyright 2016 DEVELOPED BY SFU COMPUTER SCIENSE STUDENTS. All rights reserved.
 //
-// File:        a1simpledriver.cpp
+// File:        EKTApp.cpp
 // Author:      Alex Kim
 // Date:        2016-07-12
 // Description: 
@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
 	ifstream myfile (filename);
 
 	BinarySearchTree b;
+	BinarySearchTree c;
 
 	if (myfile.is_open())
 	{
@@ -78,8 +79,9 @@ int main(int argc, char *argv[])
 
 		  cout << "Reading from cin:" << endl; 
 		  string aWord;
-		  while(getline(cin, aWord)) {   // while (there is data)
-		    // Translate aWord.
+		  while(getline(cin, aWord)) // while (there is data)
+		  {   
+		    c.display(aWord);// Translate aWord.
 		  }
 
 	}
@@ -88,7 +90,6 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
-
 
 
 

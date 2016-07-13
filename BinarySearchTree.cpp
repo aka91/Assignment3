@@ -102,6 +102,15 @@ void BinarySearchTree::display()
 	inorder(root);
 }
 
+string BinarySearchTree::display(const string engWordToTranslate)
+{
+	tree_node* t = new tree_node;
+	t->EngWord = engWordToTranslate;
+	return t->EngWord;
+
+}
+
+
 void BinarySearchTree::inorder(tree_node* p)
 {
 	
@@ -137,5 +146,4 @@ inline bool operator > (const BinarySearchTree& lhs, const BinarySearchTree& rhs
 {
 	return operator< (rhs, lhs);
 }
-
 

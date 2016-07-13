@@ -57,6 +57,8 @@ public:
 
    void display();
 
+   string display(const string engWordToTranslate);
+
    void inorder(tree_node* p);
 
    //Need an overloaded < and > operators
