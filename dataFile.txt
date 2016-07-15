@@ -6,7 +6,7 @@ today:jajvam
 face:qab
 laser:'uD'a'
 roof:beb
-take:chen-form
+take:chen form
 water:bIQ
 angle:tajvaj
 claw:pach
@@ -28,7 +28,7 @@ deck:choQ
 drain:natlh
 feather:bo
 flap:laq
-fork:puq-chonnaQ
+fork:puq chonnaQ
 initiate:tagh
 launcher:baHjan
 pair:chang'eng
@@ -38,9 +38,9 @@ sin:yem
 sterilize:Say'qu'moH
 stylus:ghItlhwI'
 support:Qutlh
-telephone:ghogh-HablI'
+telephone:ghogh HablI'
 thistle:naHjej
-utility:lo'-law'
+utility:lo' law'
 warhead:jorneb
 wave:yu'egh
 wheeze:tlhov
@@ -71,7 +71,7 @@ perch:ngun
 pretend:ghet
 spoon:baghneQ
 sterilize:Say'qu'moH
-telephone:ghogh-HablI'
+telephone:ghogh HablI'
 time:poH
 unlikely:ghaytanHa'
 wheel:rutlh
@@ -89,5 +89,5 @@ sneeze:chuy
 stylus:ghItlhwI'
 support:Qutlh
 today:jajvam
-transtator:HoS-choHwI'
+transtator:HoS choHwI'
 wonder:SIv

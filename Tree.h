@@ -19,6 +19,7 @@ public:
 	 bool search(string EngWord);
 	 void printKlinWord();
 
+
      //void preOrder(Node* n);
      //void postOrder(Node* n);
 private:

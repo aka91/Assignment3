@@ -19,6 +19,8 @@
 #include <fstream>
 #include <sstream>
 #include <locale>
+#include <ctype.h>
+#include <stdio.h>
 
 
 // Include all header files here
@@ -66,7 +68,9 @@ int main(int argc, char *argv[])
 					  line.erase(0, pos + delimiter.length());
 					  klinword = line.substr(0,pos);
 					//////////////////////////////
+					
 
+							
 					  //line >> klinword;
 					  //istringstream ss(':');
 					  //ss >> engword;
@@ -94,53 +98,62 @@ int main(int argc, char *argv[])
 					  //std::cout << klinword << endl;
 		  
 					  numLoops++;
+					  
 				}
 			}
-			std::cout << endl << endl << endl << endl << endl;
+			//std::cout << endl << endl << endl << endl << endl;
 			std::cout <<"Current number of words in tree: " << b->getWordCount() << endl;
 			std::cout <<"Current number of loops: " << numLoops << endl;
 			//if(b->isEmpty() == true)
 			//cout << "tree is empty";
-			
+		
 		if (argc == 2)
 		{
 			std::cout << "Reading from a file:" << endl;
+			//b->print(b->Root());
+			
+			////////Works when outside of if statement///////////
+			std::cout << endl << endl << endl << endl << endl;
+		
 			b->print(b->Root());
+
+			std::cout << endl << endl;
 		}
-		std::cout << endl << endl << endl << endl << endl;
 		
 		b->print(b->Root());
-
-		std::cout << endl << endl;
-
-		
+		/*
 		if(b->search("wonder"))
 		{
-			std::cout << "wonder: " << b->Root()->getKlinWord() << endl;
+			std::cout << ": " << b->Root()->getKlinWord() << endl;
 		}
 		else
 		{
 			std::cout << "Word does not exist" << endl;
 		}
-		//std::cout << "win: " << b->Root()->getKlinWord() << endl;
-		myfile.close();
 
-	}
-	else std::cout << "Unable to open file" << endl; 
-	
-	if (argc == 1) //Assuming it starts from 1 and not 0
-	{
+		*/ 
+
+		//std::cout << "win: " << b->Root()->getKlinWord() << endl;
+		
+		
+		if (argv[2] != "display") //Assuming it starts from 1 and not 0
+		{
 
 		  std::cout << "Reading from cin:" << endl; 
 		  string aWord;
+
 		  while(getline(cin, aWord)) 
 		  { // while (there is data)
 		    // Translate aWord.
-			  if(b->search(aWord) == true)
-			  {
-				  std::cout << aWord << b->Root()->getKlinWord() << endl; //Dont know if works
-				  //cout << aWord << b->printKlinWord() << endl;
-			  }
+			  engword = aWord;
+			  ////////Doesnt seem to work properly/////////
+			  //////////Only works for the first time//////
+			  if(b->search(engword))
+				{
+					std::cout << engword << ": " << b->Root()->getKlinWord() << endl;
+					//b->Root()->setRight(NULL);
+					//b->Root()->setLeft(NULL);
+				}
 			  else 
 			  {
 				  std::cout << "Word not found" << endl;
@@ -148,9 +161,54 @@ int main(int argc, char *argv[])
 
 		  }
 
+		}
+		else if (argv[2] == "display") //Test this!!!!
+		{
+			b->print(b->Root());
+			
+			std::cout << endl << endl << endl << endl << endl;
+		
+			b->print(b->Root());
+
+			std::cout << endl << endl;
+
+		}
+
+		myfile.close();
+
+	}
+	else std::cout << "Unable to open file" << endl; 
+	/*
+	if (argc == 1) //Assuming it starts from 1 and not 0
+	{
+
+		  std::cout << "Reading from cin:" << endl; 
+		  string aWord;
+		  while (getline(myfile, line))
+		  {
+				while((pos = line.find(delimiter)) != std::string::npos)
+				{
+					//////////Works////////////
+					  engword = line.substr(0,pos);
+					  line.erase(0, pos + delimiter.length());
+					  klinword = line.substr(0,pos);
+					//////////////////////////////
+
+					if(b->search(aWord))
+					{
+						std::cout << aWord << ": " << b->Root()->getKlinWord() << endl;
+					}
+					else 
+					{
+						std::cout << "Word not found" << endl;
+					}
+				}
+
+		  }
+
 	}
 	
-	
+	*/
 	delete b;
 	return 0;
 }

@@ -17,6 +17,7 @@ Node* Tree::Root()
 	return root; 
 }
 
+
 // Destructor
 Tree::~Tree() 
 {
@@ -116,7 +117,9 @@ bool Tree::search(string EngWord)
 {
 	if(EngWord == root->getEngWord())
 	{
+		
 		return true;
+		
 
 	}
 	else if(EngWord < root->getEngWord())
