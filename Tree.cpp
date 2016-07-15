@@ -51,7 +51,8 @@ void Tree::addNode(string EngWord, string KlinWord)
         root = n;
 		wordCount++;
      }
-     else {
+     else 
+	 {
        //cout << "add other node ... " << EngWord << KlinWord << endl;
        addNode(EngWord, KlinWord, root);
 	   wordCount++;
@@ -77,10 +78,12 @@ void Tree::addNode(string EngWord, string KlinWord, Node* leaf)
 		  wordCount++;
        }
     }
-	else if (EngWord == leaf->getEngWord())
+	/*
+	else if (EngWord == leaf->getEngWord()) //Results in "bad_alloc at memory location"
 	{
 		deleteNode(root);
 	}
+	*/
     else 
 	{
        if ( leaf->getRight() != NULL )
@@ -104,11 +107,11 @@ void Tree::print(Node* n)
     if (n != NULL) 
 	{
        print(n->getLeft());
-	   cout << n->getEngWord() << n->getKlinWord() << endl;
+	   cout << n->getEngWord() << ": " << n->getKlinWord() << endl;
        print(n->getRight());
     }
 }
-/*
+
 bool Tree::search(string EngWord)
 {
 	if(EngWord == root->getEngWord())
@@ -127,7 +130,7 @@ bool Tree::search(string EngWord)
 		{
 			root = root->getLeft();
 			search(EngWord);
-			return false;
+			//return false;
 		}
 	}
 	else if(EngWord > root->getEngWord())
@@ -141,7 +144,7 @@ bool Tree::search(string EngWord)
 		{
 			root = root->getRight();
 			search(EngWord);
-			return false;
+			//return false;
 		}
 	}
 	else
@@ -157,4 +160,3 @@ void Tree::printKlinWord()
 {
 	cout << root->getKlinWord();
 }
-*/

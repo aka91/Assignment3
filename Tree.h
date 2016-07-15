@@ -1,4 +1,4 @@
-#pragma once
+//#pragma once
 #include <string>
 //#include "BinarySearchTree.cpp"
 #include "Node.h"
@@ -16,8 +16,8 @@ public:
 	 int getWordCount();
      void addNode(string EngWord, string KlinWord);
      void print(Node* n);
-	 //bool search(string EngWord);
-	 //void printKlinWord();
+	 bool search(string EngWord);
+	 void printKlinWord();
 
      //void preOrder(Node* n);
      //void postOrder(Node* n);

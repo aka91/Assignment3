@@ -20,6 +20,7 @@
 #include <sstream>
 #include <locale>
 
+
 // Include all header files here
 #include "Tree.h"
 #include "Node.h"
@@ -39,6 +40,7 @@ int main(int argc, char *argv[])
 	//b->addNode("Beta", "test1");
 	//b->addNode("Alpha", "test3");
 
+	size_t pos = 0;
 	//cout << "In order traversal" << endl;
 	//b->inOrder(b->Root());
 	//cout << endl;
@@ -53,74 +55,103 @@ int main(int argc, char *argv[])
 		
 		string line;
 		//char delimiter(':');
-		char delimiter;
+		string delimiter = ":";
 
 			while (getline(myfile, line))
 			{
-			  istringstream ss(line);
-			  //ss >> engword >> delimiter >> klinword;
-			  ss >> engword >> klinword; //Dont know if delimiter is necessary
-			  //engword = engword + delimiter;
-			  //cout << engword << klinword << endl;
-			  //locale loc;
+				while((pos = line.find(delimiter)) != std::string::npos)
+				{
+					//////////Works////////////
+					  engword = line.substr(0,pos);
+					  line.erase(0, pos + delimiter.length());
+					  klinword = line.substr(0,pos);
+					//////////////////////////////
+
+					  //line >> klinword;
+					  //istringstream ss(':');
+					  //ss >> engword;
+					  //ss >> engword >> delimiter >> klinword;
+					  //ss >> engword >> klinword; //Dont know if delimiter is necessary
+
+					  //getline(ss, engword, ';');
+					  //getline(ss, klinword);
+
+					  //engword = engword + delimiter;
+					  //cout << engword << klinword << endl;
+					  //locale loc;
 	
-			  //b->insert(engword, klinword); //works
+					  //b->insert(engword, klinword); //works
 
-			  //b->display();
+					  //b->display();
 
-			  //Shouldn't do this when need to display
-			  //Maybe do this in the ADT class
-			  //engword = toupper(engword, loc);
-			  //klinword = toupper(klinword, loc);
-			  b->addNode(engword, klinword);
-			  //b->print(b->Root());
+					  //Shouldn't do this when need to display
+					  //Maybe do this in the ADT class
+					  //engword = toupper(engword, loc);
+					  //klinword = toupper(klinword, loc);
+					  b->addNode(engword, klinword);
+					  //b->print(b->Root());
+					  
+					  //std::cout << klinword << endl;
 		  
-			  numLoops++;
-
+					  numLoops++;
+				}
 			}
-		
-			cout <<"Current number of words in tree: " << b->getWordCount() << endl;
-			cout <<"Current number of loops: " << numLoops << endl;
+			std::cout << endl << endl << endl << endl << endl;
+			std::cout <<"Current number of words in tree: " << b->getWordCount() << endl;
+			std::cout <<"Current number of loops: " << numLoops << endl;
 			//if(b->isEmpty() == true)
 			//cout << "tree is empty";
 			
 		if (argc == 2)
 		{
-			cout << "Reading from a file:" << endl;
+			std::cout << "Reading from a file:" << endl;
 			b->print(b->Root());
 		}
+		std::cout << endl << endl << endl << endl << endl;
+		
+		b->print(b->Root());
+
+		std::cout << endl << endl;
 
 		
-		delete b;
+		if(b->search("wonder"))
+		{
+			std::cout << "wonder: " << b->Root()->getKlinWord() << endl;
+		}
+		else
+		{
+			std::cout << "Word does not exist" << endl;
+		}
+		//std::cout << "win: " << b->Root()->getKlinWord() << endl;
 		myfile.close();
 
 	}
-	else cout << "Unable to open file" << endl; 
+	else std::cout << "Unable to open file" << endl; 
 	
 	if (argc == 1) //Assuming it starts from 1 and not 0
 	{
 
-		  cout << "Reading from cin:" << endl; 
+		  std::cout << "Reading from cin:" << endl; 
 		  string aWord;
-		  //while(getline(cin, aWord)) 
-		 // { // while (there is data)
+		  while(getline(cin, aWord)) 
+		  { // while (there is data)
 		    // Translate aWord.
-			  //if(b->search(aWord) == true)
-			  //{
-				  cout << aWord << b->Root()->getKlinWord() << endl;
+			  if(b->search(aWord) == true)
+			  {
+				  std::cout << aWord << b->Root()->getKlinWord() << endl; //Dont know if works
 				  //cout << aWord << b->printKlinWord() << endl;
-			  //}
-			  //else 
-			  //{
-				  cout << "Word not found" << endl;
-			  //}
+			  }
+			  else 
+			  {
+				  std::cout << "Word not found" << endl;
+			  }
 
-		 // }
+		  }
 
 	}
 	
-
 	
+	delete b;
 	return 0;
 }
 
